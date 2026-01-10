@@ -1,108 +1,155 @@
 <template>
-  <div class="ai-container">
-    <div class="chat-window">
+  <div class="wellness-bg">
+    <div class="glass-card">
       <div class="chat-header">
-        <h3>AI Wellness Buddy</h3>
-        <span class="status">● Online</span>
-      </div>
-
-      <div class="message-area">
-        <div class="message ai">
-          Hello! I'm here to listen. How are you feeling today?
-        </div>
-        <div class="message user">
-          I've been feeling a bit stressed lately.
+        <div class="bot-info">
+          <div class="avatar">🌿</div>
+          <div>
+            <h3>Constellation Kim</h3>
+            <p class="status">Always here for you</p>
+          </div>
         </div>
       </div>
 
-      <div class="input-area">
-        <input type="text" placeholder="Type your message here..." />
-        <button>Send</button>
+      <div class="chat-body">
+        <div class="date-chip">Today</div>
+        
+        <div class="msg bot">
+          <p>Hi there. Take a deep breath. How are you feeling in this moment?</p>
+        </div>
+
+        <div class="msg user">
+          <p>I'm feeling a bit overwhelmed with my studies.</p>
+        </div>
+      </div>
+
+      <div class="chat-footer">
+        <input type="text" placeholder="Share your thoughts..." />
+        <button class="send-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.ai-container {
+/* Gradient Background representing a sunset/calm sky */
+.wellness-bg {
+  min-height: 90vh;
+  background: linear-gradient(135deg, #f3f4f1 0%, #e0e7ff 100%);
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  background-color: #f9fafb;
-  min-height: 80vh;
+  align-items: center;
+  padding: 20px;
 }
 
-.chat-window {
+/* Glassmorphism Card */
+.glass-card {
   width: 100%;
-  max-width: 500px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .chat-header {
-  background: #166534;
-  color: white;
-  padding: 1rem;
+  padding: 25px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.bot-info {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 
-.status {
-  font-size: 0.8rem;
-  color: #4ade80;
+.avatar {
+  font-size: 24px;
+  background: white;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.message-area {
+h3 { margin: 0; font-weight: 600; color: #2d3436; }
+.status { margin: 0; font-size: 12px; color: #00b894; }
+
+.chat-body {
   flex: 1;
-  padding: 1rem;
+  padding: 20px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-height: 300px;
+  gap: 15px;
 }
 
-.message {
-  padding: 10px 15px;
-  border-radius: 15px;
-  max-width: 80%;
+.date-chip {
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.ai {
-  background: #f3f4f6;
+.msg {
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 85%;
+}
+
+.bot {
+  background: white;
+  color: #444;
   align-self: flex-start;
+  border-bottom-left-radius: 4px;
 }
 
 .user {
-  background: #dcfce7;
-  color: #166534;
+  background: #2d3436;
+  color: white;
   align-self: flex-end;
+  border-bottom-right-radius: 4px;
 }
 
-.input-area {
+.chat-footer {
+  padding: 20px;
   display: flex;
-  padding: 1rem;
-  border-top: 1px solid #eee;
   gap: 10px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  outline: none;
+  transition: 0.3s;
 }
 
-button {
-  background: #166534;
+input:focus { background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+.send-btn {
+  background: #2d3436;
   color: white;
   border: none;
-  padding: 0 15px;
-  border-radius: 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  transition: transform 0.2s;
 }
+
+.send-btn:hover { transform: scale(1.05); }
 </style>
