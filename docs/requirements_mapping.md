@@ -1,7 +1,8 @@
-# Requirements Mapping - Lab 2
+# Requirements Mapping
 
-| User Story | Page | Component |
-| :--- | :--- | :--- |
-| As a user, I want to practice deep breathing. | Breathing Page | `Breathing.vue` |
-| As a user, I want to read wellness tips. | Wellness Page | `Wellness.vue` |
-| As a user, I want to chat with AI support. | AI Support Page | `AiSupport.vue` |
+| User Story                              | Page              | Component(s)                  |
+|-----------------------------------------|-------------------|-------------------------------|
+| View and practice guided breathing      | Breathing         | Breathing.vue                 |
+| Read wellness tips & mental health resources | Wellness     | Wellness.vue (placeholder)    |
+| Get AI-driven emotional support & chat  | AI Support        | AiSupport.vue (placeholder)   |
+| Navigate between all main pages easily  | All pages         | Navbar.vue                    |
