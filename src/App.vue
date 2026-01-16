@@ -6,7 +6,9 @@ import Footer from './components/Footer.vue' // Add this line
 
 <template>
   <Navbar />
-  <main>
-    <RouterView />
-  </main>
-  <Footer /> </template>
+  <router-view />
+</template>
+
+<script setup>
+import Navbar from './components/Navbar.vue'
+</script>

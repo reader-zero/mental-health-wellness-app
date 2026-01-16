@@ -1,30 +1,54 @@
 <template>
   <nav class="navbar">
-    <div class="logo">🧠 Wellness Companion</div>
-    <div class="links">
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/breathing">Breathing</RouterLink>
-      <RouterLink to="/wellness">Wellness</RouterLink>
-      <RouterLink to="/ai-support">AI Support</RouterLink>
-    </div>
+    <div class="logo">Mental Health Companion</div>
+    <ul class="nav-links">
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/breathing">Breathing</router-link></li>
+      <li><router-link to="/wellness">Wellness</router-link></li>
+      <li><router-link to="/ai-support">AI Support</router-link></li>
+    </ul>
   </nav>
 </template>
+
+<script setup>
+// No script needed for now
+</script>
 
 <style scoped>
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  background: #f0fdf4; /* Light wellness green */
-  border-bottom: 1px solid #dcfce7;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #4a6bff;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-.links a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: #166534;
+
+.logo {
+  font-size: 1.5rem;
   font-weight: bold;
 }
-.router-link-active {
-  color: #22c55e !important; /* Highlights the current page */
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.router-link-active {
+  color: #ffd700;
 }
 </style>
