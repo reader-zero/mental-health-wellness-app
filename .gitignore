@@ -7,14 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-.DS_Store
+# Dependency directories (never commit)
+node_modules/
+
+# Build outputs
 dist
 dist-ssr
-coverage
 *.local
 
-# Editor directories and files
+# Test coverage
+coverage
+
+# Editor & OS generated files
+.DS_Store
+Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -24,13 +30,22 @@ coverage
 *.sln
 *.sw?
 
+# TypeScript / build caches
 *.tsbuildinfo
-
 .eslintcache
 
-# Cypress
+# Environment variables (VERY IMPORTANT - never commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# Cypress testing artifacts
 /cypress/videos/
 /cypress/screenshots/
 
-# Vitest
+# Vitest artifacts
 __screenshots__/
+
+# Temporary / backup files
+*.bak
+*.tmp
