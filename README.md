@@ -19,3 +19,5 @@ A Vue.js wellness awareness website featuring guided breathing exercises, wellne
 ```bash
 npm install
 npm run dev
+
+Last updated on Jan 16, 2026 
