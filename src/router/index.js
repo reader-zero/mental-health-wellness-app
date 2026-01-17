@@ -11,6 +11,8 @@ const router = createRouter({
     { path: '/breathing', name: 'breathing', component: Breathing },
     { path: '/wellness', name: 'wellness', component: Wellness },
     { path: '/ai-support', name: 'ai-support', component: AiSupport }
+
+    
   ]
 })
 

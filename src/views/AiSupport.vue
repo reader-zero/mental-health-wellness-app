@@ -1,3 +1,27 @@
+<<script setup>
+import { ref } from 'vue'
+import { getAiMessage } from '../services/aiService'
+
+// 1. Reactive variables to hold data
+const userMood = ref("") // What the user types
+const aiResponse = ref("Hi there. Take a deep breath. How are you feeling in this moment?")
+const isLoading = ref(false)
+
+// 2. The function to handle the click
+const handleSend = async () => {
+  if (!userMood.value) return // Don't send empty messages
+
+  isLoading.value = true
+  
+  // Call the service we created in Activity 4
+  const message = await getAiMessage("Give a supportive message for: " + userMood.value)
+  
+  aiResponse.value = message
+  userMood.value = "" // Clear the input box
+  isLoading.value = false
+}
+</script>
+
 <template>
   <div class="wellness-bg">
     <div class="glass-card">
@@ -15,23 +39,28 @@
         <div class="date-chip">Today</div>
         
         <div class="msg bot">
-          <p>Hi there. Take a deep breath. How are you feeling in this moment?</p>
-        </div>
-
-        <div class="msg user">
-          <p>I'm feeling a bit overwhelmed with my studies.</p>
+          <p v-if="isLoading">Thinking...</p>
+          <p v-else>{{ aiResponse }}</p>
         </div>
       </div>
 
       <div class="chat-footer">
-        <input type="text" placeholder="Share your thoughts..." />
-        <button class="send-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        <input 
+          v-model="userMood" 
+          type="text" 
+          placeholder="Share your thoughts..." 
+          @keyup.enter="handleSend"
+        />
+        <button class="send-btn" @click="handleSend" :disabled="isLoading">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+          </svg>
         </button>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 /* Gradient Background representing a sunset/calm sky */
