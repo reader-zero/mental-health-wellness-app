@@ -1,23 +1,31 @@
-<<script setup>
+<script setup>
 import { ref } from 'vue'
 import { getAiMessage } from '../services/aiService'
 
-// 1. Reactive variables to hold data
-const userMood = ref("") // What the user types
-const aiResponse = ref("Hi there. Take a deep breath. How are you feeling in this moment?")
+const userMood = ref("")
 const isLoading = ref(false)
 
-// 2. The function to handle the click
-const handleSend = async () => {
-  if (!userMood.value) return // Don't send empty messages
+// 1. Change to an array to store the whole conversation
+const chatHistory = ref([
+  { role: 'bot', text: "Hi there. Take a deep breath. How are you feeling in this moment?" }
+])
 
+const handleSend = async () => {
+  if (!userMood.value) return 
+
+  // 2. Add the User's message to the history immediately
+  const currentMood = userMood.value
+  chatHistory.value.push({ role: 'user', text: currentMood })
+  
+  userMood.value = "" // Clear input right away
   isLoading.value = true
   
-  // Call the service we created in Activity 4
-  const message = await getAiMessage("Give a supportive message for: " + userMood.value)
+  // 3. Get AI response
+  const message = await getAiMessage("Give a supportive message for someone who feels: " + currentMood)
   
-  aiResponse.value = message
-  userMood.value = "" // Clear the input box
+  // 4. Add the Bot's response to the history
+  chatHistory.value.push({ role: 'bot', text: message })
+  
   isLoading.value = false
 }
 </script>
@@ -38,9 +46,16 @@ const handleSend = async () => {
       <div class="chat-body">
         <div class="date-chip">Today</div>
         
-        <div class="msg bot">
-          <p v-if="isLoading">Thinking...</p>
-          <p v-else>{{ aiResponse }}</p>
+        <div 
+          v-for="(chat, index) in chatHistory" 
+          :key="index" 
+          :class="['msg', chat.role]"
+        >
+          <p>{{ chat.text }}</p>
+        </div>
+
+        <div v-if="isLoading" class="msg bot">
+          <p class="typing">Kim is thinking...</p>
         </div>
       </div>
 
