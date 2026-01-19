@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-// No script needed for now
+// No logic needed for now
 </script>
 
 <style scoped>
@@ -20,35 +20,56 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #4a6bff;
+  background: #6a1b9a;          /* Deep purple main background */
   color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.3); /* Soft purple shadow */
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 2.5rem;
   margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover,
 .nav-links a.router-link-active {
-  color: #ffd700;
+  color: #d1c4e9;               /* Light lavender on hover/active */
+}
+
+/* Underline effect on hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: #d1c4e9;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.router-link-active::after {
+  width: 100%;
 }
 </style>
